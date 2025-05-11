@@ -74,9 +74,9 @@ jobs:
         name: goum_client-arm
         path: ./goum_client-arm
 
-    - name: Build i386
+    - name: Build client i386
       working-directory: ./client
-      run: GOARCH=386 GOOS=linux go build -o ./goum_client-i386
+      run: GOARCH=386 GOOS=linux go build -o ../goum_client-i386
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
       with:
