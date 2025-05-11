@@ -74,16 +74,17 @@ jobs:
         name: goum_client-arm
         path: ./goum_client-arm
 
-    - name: Build
+    - name: Build i386
       working-directory: ./client
-      run: GOARCH=386 GOOS=linux go build -o ./goum_client-386
+      run: GOARCH=386 GOOS=linux go build -o ./goum_client-i386
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
       with:
-        name: goum_client-386
-        path: ./goum_client-386
+        name: goum_client-i386
+        path: ./goum_client-i386
 
     - name: Build client ppc64le
+      working-directory: ./client
       run: GOARCH=ppc64le GOOS=linux go build -o ../goum_client-ppc64le 
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
@@ -92,6 +93,7 @@ jobs:
         path: ./goum_client-ppc64le
 
     - name: Build client ppc64
+      working-directory: ./client
       run: GOARCH=ppc64 GOOS=linux go build -o ../goum_client-ppc64 
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
@@ -100,6 +102,7 @@ jobs:
         path: ./goum_client-ppc64
 
     - name: Build client mips64le
+      working-directory: ./client
       run: GOARCH=mips64le GOOS=linux go build -o ../goum_client-mips64le 
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
@@ -108,6 +111,7 @@ jobs:
         path: ./goum_client-mips64le
 
     - name: Build client mips64
+      working-directory: ./client
       run: GOARCH=mips64 GOOS=linux go build -o ../goum_client-mips64 
     - name: Upload compiled binary
       uses: actions/upload-artifact@v4
