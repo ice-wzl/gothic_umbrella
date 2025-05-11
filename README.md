@@ -1,4 +1,4 @@
-# GOTHICUMBRELLA
+# gothic_umbrella
 ![GOUM art](images/goum.webp)
 ## Compile 
 ````
@@ -33,7 +33,7 @@ garble -literals -tiny build -a -ldflags="-s -w" -o server_protected server.go
 strip server_protected
 ````
 ## Usage 
-- connect to a listening GOUM like below 
+- connect to a listening gothic_umbrella server like below 
 ````
 ./goum_client -host="192.168.15.7" -port=60000
 ````
