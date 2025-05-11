@@ -1,0 +1,5 @@
+output/*
+client/client
+server/server
+server/main
+client/goum_client
