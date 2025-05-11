@@ -1,0 +1,110 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
+
+    - name: Build
+      run: go build -o goum_server-x64 server/server.go 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_server-x64
+        path: ./goum_server-x64
+    
+    - name: Build
+      run: go build -o goum_client-x64 client/
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-x64
+        path: ./goum_client-x64
+
+    - name: Build
+      run: GOARCH=mips GOOS=linux go build -o goum_client-mips client/
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-mips
+        path: ./goum_client-mips
+
+    - name: Build
+      run: GOARCH=mipsle GOOS=linux go build -o goum_client-mipsle client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-mipsle
+        path: ./goum_client-mipsle
+
+    - name: Build
+      run: GOARCH=arm64 GOOS=linux go build -o goum_client-arm64 client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-arm64
+        path: ./goum_client-arm64
+
+    - name: Build
+      run: GOARCH=arm GOOS=linux go build -o goum_client-arm client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-arm
+        path: ./goum_client-arm
+
+    - name: Build
+      run: GOARCH=386 GOOS=linux go build -o goum_client-386 client/
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-386
+        path: ./goum_client-386
+
+    - name: Build
+      run: GOARCH=ppc64le GOOS=linux go build -o goum_client-ppc64le client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-ppc64le
+        path: ./goum_client-ppc64le
+
+    - name: Build
+      run: GOARCH=ppc64 GOOS=linux go build -o goum_client-ppc64 client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-ppc64
+        path: ./goum_client-ppc64
+
+    - name: Build
+      run: GOARCH=mips64le GOOS=linux go build -o goum_client-mips64le client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-mips64le
+        path: ./goum_client-mips64le
+
+    - name: Build
+      run: GOARCH=mips64 GOOS=linux go build -o goum_client-mips64 client/ 
+    - name: Upload compiled binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: goum_client-mips64
+        path: ./goum_client-mips64
