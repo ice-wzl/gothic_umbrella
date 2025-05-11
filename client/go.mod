@@ -1,6 +1,6 @@
 module goum_client
 
-go 1.22.5
+go 1.23
 
 require (
 	github.com/chzyer/readline v1.5.1
